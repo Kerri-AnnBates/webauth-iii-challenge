@@ -23,6 +23,6 @@ async function add(user) {
    return findById(id);
 }
 
-function findBy(username) {
-   return db('users').where("username", username).first();
+function findBy(filter) {
+   return db('users').where(filter);
 }

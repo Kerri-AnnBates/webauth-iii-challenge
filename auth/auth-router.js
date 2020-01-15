@@ -25,7 +25,7 @@ router.post('/login', (req, res) => {
    
    if (username && password) {
       // find user by username.
-      Users.findBy(username)
+      Users.findBy({username})
          .then(user => {
             //if password match send back data
             if (user && bcrypt.compareSync(password, user.password)) {
@@ -49,7 +49,8 @@ router.post('/login', (req, res) => {
 
 function signToken(user) {
    const payload = {
-      id: user.id
+      id: user.id,
+      department: user.department
    }
 
    const secret = process.env.JWT_SECRET;
